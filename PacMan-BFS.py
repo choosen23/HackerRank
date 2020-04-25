@@ -1,7 +1,8 @@
 """
-In this game, PacMan is positioned in a grid. PacMan has to find the food using Depth First Search (DFS). Assume the grid is completely observable, perform a DFS on the grid and then print the path obtained by DFS from the PacMan to the food.
+In this game, PacMan is positioned in a grid. PacMan has to find the food using Breadth First Search (BFS), provided the grid is completely observable, perform a BFS on the grid and then print the path obtained by BFS from the PacMan to the food.
 """
 
+from collections import deque 
 import copy
 
 p = tuple(map(int, input().split()))
@@ -9,7 +10,7 @@ f = tuple(map(int, input().split()))
 N , M = list(map(int, input().split()))
 grid = []
 explored_nodes = []
-aux = []
+aux = deque()
 res = None
 
 rt = []
@@ -22,7 +23,7 @@ directions = [[-1, 0], [0, -1], [0, 1], [1, 0]]
 
 aux.append([p[0], p[1], []])
 while len(aux) > 0:
-    x, y, r = aux.pop()
+    x, y, r = aux.popleft()
     routes = copy.deepcopy(r)
     routes.append([x, y])   
 
